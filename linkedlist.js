@@ -35,37 +35,49 @@ class Linkedlist {
 
     // size -> return the total number of node 
     size() {
-        console.log(this.linkedlist.length);
+        return this.linkedlist.length;
     }
 
     // head -> return the first node 
     head() {
-
+        return this.linkedlist[0].value;
     }
 
     // tail -> return the last node 
     tail() {
-
+        return this.linkedlist[(this.linkedlist.length)-1]
     }
 
     // at(index) -> return the node at the given index
     at(index) {
-
+        return this.linkedlist[index].value;
     }
 
     // pop -> removes the last element from the list 
     pop() {
-
-    }
+        return this.linkedlist.pop();
+    }  
 
     // contains(value) -> returns true if the list has it if not return false
     contains(value) {
-
+        for(let i = 0; i < this.linkedlist.length; i++) {
+            if(this.linkedlist[i].value === value) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     // find(value) -> returns the index of the node if it has value or null
     find(value) {
-
+        for(let i = 0; i < this.linkedlist.length; i++) {
+            if(this.linkedlist[i].value === value) {
+                return i;
+            } else if (this.linkedlist[i].value !== value) {
+                return null;
+            }
+        }
     }
 
     // toString -> represents linkedlist objects as strings 

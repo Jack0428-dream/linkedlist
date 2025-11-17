@@ -43,19 +43,19 @@ class Linkedlist {
         let current = this.head;
         let number = 0;
 
-        while(current.nextNode !== null) {
-            current = current.nextNode;
+        while(current !== null) {
             number += 1;
+            current = current.nextNode;
         }
 
-        return console.log(number);
+        return number;
     }
 
-    head() {
+    headPoint() {
         if(this.head === null) {
             return console.log("This list is empty");
         } else {
-            return console.log(this.head);
+            return console.log(this.head.value);
         }
     }
 
@@ -74,17 +74,13 @@ class Linkedlist {
     }
 
     at(index) {
-        if(index > this.size()) {
-            return console.log("size is shoreter than given index")
-        } else {
-            let current = this.head;
+        let current = this.head;
 
-            for(let i = 0; i <= index; i++) {
-                current = current.nextNode;
-            }
-
-            return console.log(current);
+        for(let i = 0; i <= index; i++) {
+            current = current.nextNode;
         }
+
+        return current.value;
     }
 
     pop() {
@@ -151,6 +147,20 @@ class Linkedlist {
     // removeAt(index) {
 
     // }
+
+    changeAdr(item) {
+        let current = this.head;
+        let length = this.size();
+
+        for(let i = 0; i < length; i++) {
+            if(current.value === item) {
+                current = current.nextNode.nextNode;
+                return true;
+            } else {
+                current = current.nextNode;
+            }
+        }
+    }
 }
 
 const list = new Linkedlist();
@@ -162,4 +172,10 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
+list.changeAdr("cat");
+// list.pop();
+list.prepend("dolphine");
 list.toString();
+list.size();
+list.headPoint();
+list.tail();

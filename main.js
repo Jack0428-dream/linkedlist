@@ -74,13 +74,24 @@ class Linkedlist {
     }
 
     at(index) {
+        // returns the node at the given index. 
+        // if the given index is larger than the its size
+        // throw an error 
+        if(index > this.size()) {
+            console.error("Given index exceeds the size of the list");
+        }
+        // if we have the node in given index 
+        // we need to traversal to the given index then
+        // return the node.
         let current = this.head;
 
         for(let i = 0; i <= index; i++) {
-            current = current.nextNode;
+            if(i === index) {
+                return current.value;
+            } else {
+                current = current.nextNode;
+            }
         }
-
-        return current.value;
     }
 
     pop() {
@@ -172,10 +183,11 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-list.changeAdr("cat");
+// list.changeAdr("cat");
 // list.pop();
 list.prepend("dolphine");
+console.log(list.at(4));
 list.toString();
-list.size();
+console.log(list.size());
 list.headPoint();
 list.tail();

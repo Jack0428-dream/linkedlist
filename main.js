@@ -97,14 +97,16 @@ class Linkedlist {
     pop() {
         if(this.head === null) {
             return console.log("This list is empty");
+        } else if(this.head !== null && this.head.nextNode === null) {
+            this.head = null;
         } else {
             let current = this.head;
 
-            for(let i = 1; i <= this.size()-1; i++) {
+            while(current.nextNode.nextNode !== null) {
                 current = current.nextNode;
             }
 
-            current = null;
+            current.nextNode = null;
         }
     }
 
@@ -184,7 +186,7 @@ list.append("snake");
 list.append("turtle");
 
 // list.changeAdr("cat");
-// list.pop();
+list.pop();
 list.prepend("dolphine");
 console.log(list.at(4));
 list.toString();

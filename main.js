@@ -125,17 +125,21 @@ class Linkedlist {
     }
 
     find(value) {
+        // returns true if the passed in value is in the list
+        // otherwise returns false
         let current = this.head;
         let number = 0;
 
-        while(current.nextNode !== null) {
-            number += 1;
+        while(current !== null) {
             if(current.value === value) {
                 return number;
+            } else {
+                number += 1;
+                current = current.nextNode;
             }
         }
 
-        return console.log("The list doesn't have this value");
+        return null;
     }
 
     toString() {
@@ -193,4 +197,5 @@ list.toString();
 console.log(list.size());
 list.headPoint();
 list.tail();
-console.log(list.contains("snake"));
+console.log(list.find("snake"));
+

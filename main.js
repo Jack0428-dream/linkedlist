@@ -113,12 +113,12 @@ class Linkedlist {
     contains(value) {
         let current = this.head;
 
-        while(current.nextNode !== null) {
+        while(current !== null) {
             if(current.value === value) {
-                return true 
+                return true;
+            } else {
+                current = current.nextNode;
             }
-
-            current = current.nextNode;
         }
 
         return false;
@@ -193,3 +193,4 @@ list.toString();
 console.log(list.size());
 list.headPoint();
 list.tail();
+console.log(list.contains("snake"));

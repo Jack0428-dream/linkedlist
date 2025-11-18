@@ -55,7 +55,7 @@ class Linkedlist {
         if(this.head === null) {
             return console.log("This list is empty");
         } else {
-            return console.log(this.head.value);
+            return this.head;
         }
     }
 
@@ -69,7 +69,7 @@ class Linkedlist {
                 current = current.nextNode;
             }
 
-            return console.log(current);
+            return current;
         }
     }
 
@@ -78,7 +78,7 @@ class Linkedlist {
         // if the given index is larger than the its size
         // throw an error 
         if(index > this.size()) {
-            console.error("Given index exceeds the size of the list");
+            return console.error("Given index exceeds the size of the list");
         }
         // if we have the node in given index 
         // we need to traversal to the given index then
@@ -165,6 +165,7 @@ class Linkedlist {
 
         if(index === 0) {
             const node = new Node(value, null);
+            
             node.nextNode = this.head;
             this.head = node;
         } else if(index > 0) {

@@ -157,26 +157,48 @@ class Linkedlist {
         return console.log(result);
     }
 
-    // insertAt(value, index) {
+    insertAt(value, index) {
+    // inserts a new node with the provided value at the given index
+        if(index > this.size()) {
+            console.error("Index exceeds the size of this list.");
+        }
 
-    // }
-
-    // removeAt(index) {
-
-    // }
-
-    changeAdr(item) {
-        let current = this.head;
-        let length = this.size();
-
-        for(let i = 0; i < length; i++) {
-            if(current.value === item) {
-                current = current.nextNode.nextNode;
-                return true;
-            } else {
+        if(index === 0) {
+            const node = new Node(value, null);
+            node.nextNode = this.head;
+            this.head = node;
+        } else if(index > 0) {
+            // traversal to the index
+            const node = new Node(value, null);
+            let current = this.head;
+            
+            for(let i = 1; i < index; i++) {
                 current = current.nextNode;
             }
+
+            node.nextNode = current.nextNode;
+            current.nextNode = node;
         }
+    }
+
+    removeAt(index) {
+    // removes the node at the given index
+        if (index > this.size()) {
+            console.error("Index exceeds the size of this list");
+        }
+
+        if(index === 0) {
+            this.head = this.head.nextNode;
+        } else if (index > 0) {
+            let current = this.head;
+
+            for(let i = 1; i < index; i++) {
+                current = current.nextNode;
+            }
+
+            current.nextNode = current.nextNode.nextNode;
+        }
+
     }
 }
 
@@ -198,4 +220,8 @@ console.log(list.size());
 list.headPoint();
 list.tail();
 console.log(list.find("snake"));
+list.insertAt("crab", 3);
+list.toString();
+list.removeAt(4);
+list.toString();
 
